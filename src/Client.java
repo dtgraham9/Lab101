@@ -7,41 +7,57 @@ import java.util.Scanner;
  * @version 8/25/2018
  */
 public class Client {
-    
+    /**
+     * Prompt for id and name values and return a String array
+     * @param input
+     * @return 
+     */
+    public static String[] createEmployee(Scanner input)
+    {
+        System.out.print("Enter in id#: ");
+        int id = input.nextInt();
+        input.nextLine();
+        System.out.print("Enter in name: ");
+        String name = input.nextLine();
+        String[] employeeValues = new String[2];
+        employeeValues[0] = String.valueOf(id);
+        employeeValues[1] = name;
+        return employeeValues;
+        
+    }
+    /**
+     * Calls createEmployee to prompt for id and name then prompt 
+     * for position and hourly rate to return Hourly object
+     * @param input
+     * @return 
+     */
     public static Hourly createHourlyObject(Scanner input)
     {
         System.out.println("Enter information for hourly employee.");
-        System.out.print("Enter in id#: ");
-        int id = input.nextInt();
-        input.nextLine();
-        System.out.print("\nEnter in name: ");
-        String name = input.nextLine();
-        //input.nextLine();
-        System.out.print("\nEnter in position: ");
+        String[] employeeValues = createEmployee(input);
+        System.out.print("Enter in position: ");
         String position = input.nextLine();
-        //input.nextLine();
-        System.out.print("\nEnter in hourly rate: ");
+        System.out.print("Enter in hourly rate: ");
         double hourlyRate = input.nextDouble();
         input.nextLine();
-        return new Hourly(id, name, position, hourlyRate);
+        return new Hourly(Integer.parseInt(employeeValues[0]), employeeValues[1], position, hourlyRate);
     }
-    
+    /**
+     * Calls createEmployee to prompt for id and name and then prompt
+     * for title and salary to return Salaried
+     * @param input
+     * @return 
+     */
     public static Salaried createSalaryObject(Scanner input)
     {
         System.out.println("Enter information for salary employee.");
-        System.out.print("Enter in id#: ");
-        int id = input.nextInt();
-        input.nextLine();
-        System.out.print("\nEnter in name: ");
-        String name = input.nextLine();
-        //input.nextLine();
-        System.out.print("\nEnter in title: ");
+        String[] employeeValues = createEmployee(input);
+        System.out.print("Enter in title: ");
         String title = input.nextLine();
-        //input.nextLine();
-        System.out.print("\nEnter in salary: ");
+        System.out.print("Enter in salary: ");
         int salary = input.nextInt();
         input.nextLine();
-        return new Salaried(id, name, title, salary);
+        return new Salaried(Integer.parseInt(employeeValues[0]), employeeValues[1], title, salary);
     }
     /**
      * @param args the command line arguments
@@ -76,5 +92,24 @@ public class Client {
             }
 
         }
-}
+
+        //Test false for employee equals
+        Employee employeeTemplate = new Employee(1,"Bob");
+        Employee falseEmployee = new Employee(2,"Sam");
+        System.out.println("Testing for false value for Employee equals: " + employeeTemplate.equals(falseEmployee));
+        
+        //Test true for employee equals
+        Employee trueEmployee = new Employee(1, "Bob");
+        System.out.println("Test for true value for Employee equals: " + employeeTemplate.equals(trueEmployee));
+        
+        //Test false for Hourly equals
+        Hourly hourlyTemplate = new Hourly(1,"Bob","Intern",15.0);
+        Hourly falseHourly = new Hourly(2,"Sam", "Senior", 15.0);
+        System.out.println("Test for false value for Hourly equals: " + hourlyTemplate.equals(falseHourly));
+        
+        //Test true for Hourly equals
+        Hourly trueHourly = new Hourly(1,"Bob","Intern",15.0);
+        System.out.println("Test true value for Hourly equals: " + hour);
+    
+    }
 }
