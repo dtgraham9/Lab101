@@ -58,33 +58,23 @@ public class Client {
         
         for(int i = 0; i <10;i++){
             try{
-            System.out.println(employeeList[i].toString());}
+            System.out.println(employeeList[i].toString());
+            }
             catch(NullPointerException e){
                 System.out.println("id: , name: ");
             }
         }
         System.out.println("\nRaise");
-        for(int i=0; i <10; i++)
-        {
-            try {
-                if(((Hourly)employeeList[i]) instanceof Hourly){
-                    ((Hourly) employeeList[i]).setHourlyRate(((Hourly) employeeList[i]).getHourlyRate()*1.1);
-                    System.out.println(employeeList[i].toString());
-                }
-            }
-            catch(ClassCastException e){
-                
-            }
-            
-            try{
-                if(((Salaried) employeeList[i]) instanceof Salaried){
-                    ((Salaried) employeeList[i]).setSalary((int) (((Salaried) employeeList[i]).getSalary() * 1.1));
+        for (int i = 0; i < 10; i++) {
+
+            if (employeeList[i] instanceof Hourly) {
+                ((Hourly) employeeList[i]).setHourlyRate(((Hourly) employeeList[i]).getHourlyRate() * 1.1);
                 System.out.println(employeeList[i].toString());
-                }
+            } else if (employeeList[i] instanceof Salaried) {
+                ((Salaried) employeeList[i]).setSalary((int) (((Salaried) employeeList[i]).getSalary() * 1.1));
+                System.out.println(employeeList[i].toString());
             }
-            catch(ClassCastException e){
-                
-            }
+
         }
 }
 }

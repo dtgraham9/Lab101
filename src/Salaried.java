@@ -22,7 +22,7 @@ public class Salaried extends Employee{
     public Salaried(int id, String name, String title, int salary){
         super(id, name);
         this.title = title;
-        this.salary =salary;
+        setSalary(salary);
     }
     
     /**
@@ -51,10 +51,18 @@ public class Salaried extends Employee{
     
     /**
      * Sets Salaried employee's salary
+     * Does not allow negative if negative
+     * set to 0
      * @param salary int
      */
-    public void setSalary(int salary){
-        this.salary = salary;
+    public final void setSalary(int salary){
+        if(salary >= 0)
+        {
+            this.salary = salary;
+        }
+        else{
+            this.salary = 0;
+        }
     }
     /**
      * Takes Salaried's class fields and puts them
@@ -77,8 +85,7 @@ public class Salaried extends Employee{
         if ( !( o instanceof Salaried ) )
             return false;   
         Salaried e = ( Salaried ) o;
-        return super.getId() == e.getId()
-                && super.getName().equals( e.getName())
+        return super.equals(o)
                 && this.getSalary() == e.getSalary()
                 && this.getTitle().equals(e.getTitle());        
     }

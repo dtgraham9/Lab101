@@ -22,7 +22,7 @@ public class Hourly extends Employee {
     public Hourly(int id, String name, String position, double hourlyRate){
         super(id,name);
         this.position = position;
-        this.hourlyRate = hourlyRate;
+        setHourlyRate(hourlyRate);
     }
     
     /**
@@ -51,10 +51,19 @@ public class Hourly extends Employee {
     
     /**
      * Sets hourly employee's hourly rate
+     * Does not allow negative rate if 
+     * negative rate set to 0
      * @param hourlyRate double
      */
-    public void setHourlyRate(double hourlyRate){
-        this.hourlyRate = hourlyRate;
+    public final void setHourlyRate(double hourlyRate){
+        if(hourlyRate >= 0.0)
+        {
+            this.hourlyRate = hourlyRate;
+        }
+        else
+        {
+            this.hourlyRate = 0.0;
+        }
     }
     
     /**
@@ -69,8 +78,7 @@ public class Hourly extends Employee {
         if ( !( o instanceof Hourly ) )
             return false;   
         Hourly e = ( Hourly ) o;
-        return super.getId() == e.getId()
-                && super.getName().equals( e.getName())
+        return super.equals(o)
                 && this.getHourlyRate() == e.getHourlyRate()
                 && this.getPosition().equals(e.getPosition());        
     }
