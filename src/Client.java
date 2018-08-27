@@ -96,7 +96,7 @@ public class Client {
         //Test false for employee equals
         Employee employeeTemplate = new Employee(1,"Bob");
         Employee falseEmployee = new Employee(2,"Sam");
-        System.out.println("Testing for false value for Employee equals: " + employeeTemplate.equals(falseEmployee));
+        System.out.println("\nTesting for false value for Employee equals: " + employeeTemplate.equals(falseEmployee));
         
         //Test true for employee equals
         Employee trueEmployee = new Employee(1, "Bob");
@@ -109,7 +109,16 @@ public class Client {
         
         //Test true for Hourly equals
         Hourly trueHourly = new Hourly(1,"Bob","Intern",15.0);
-        System.out.println("Test true value for Hourly equals: " + hour);
+        System.out.println("Test true value for Hourly equals: " + hourlyTemplate.equals(trueHourly));
+        
+        //Test false for Salaried equals
+        Salaried salariedTemplate = new Salaried(1,"Bob","Intern",1500);
+        Salaried falseSalaried = new Salaried(2,"Sam","Senior", 200000);
+        System.out.println("Test for false value for Salaried equals: " + salariedTemplate.equals(falseSalaried));
+        
+        //Test true for Salaried equals
+        Salaried trueSalaried = new Salaried(1,"Bob","Intern",1500);
+        System.out.println("Test for true value for Salaried equals: " + salariedTemplate.equals(trueSalaried));
     
     }
 }
