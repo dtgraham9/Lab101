@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Hourly extends Employee {
     private String position;
     private double hourlyRate;
+    private static int hourlyCounter =0;
         
     /**
      * Creates instance of Hourly object 
@@ -23,8 +24,17 @@ public class Hourly extends Employee {
         super(id,name);
         this.position = position;
         setHourlyRate(hourlyRate);
+        hourlyCounter++;
     }
     
+    /**
+     * Returns number of Hourly instances
+     * @return 
+     */
+    public static int getHourlyCounter()
+    {
+        return hourlyCounter;
+    }
     /**
      * Returns Hourly employee's position
      * @return position string

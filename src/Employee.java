@@ -8,10 +8,11 @@ import java.util.Objects;
  * @version 8/25/2018
  */
 public class Employee {
+    private static int counterEmployee =0;
     private int id;
     private String name;
        
-    /**
+     /**
      * Creates instance of Employee with an id
      *  and name
      * @param id of employee
@@ -20,8 +21,19 @@ public class Employee {
     public Employee(int id, String name){
         this.id = id;
         this.name = name;
+        counterEmployee++;
     }
-    
+    public Employee()
+    {
+        counterEmployee++;
+    }
+    /**
+     * Returns the number of Employee instance
+     * @return counter
+     */
+    public static int getEmployeeCounter(){
+        return counterEmployee;
+    }
     /**
      * Returns this employee's name
      * @return name 

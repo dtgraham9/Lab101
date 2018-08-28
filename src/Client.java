@@ -2,7 +2,13 @@
 import java.util.Scanner;
 
 /**
- *
+ * Creates three Salaried class and three Hourly class 
+ * that are stored in an Employee array
+ * All classes are create via input from keyboard
+ * All classes are printed by toString
+ * All classes receive a 10% raise and reprinted via toString
+ * Finally the total of each type of class is printed
+ * The equals method for Employee, Salaried, and Hourly are test
  * @author Graham Thompson
  * @version 8/25/2018
  */
@@ -59,27 +65,31 @@ public class Client {
         input.nextLine();
         return new Salaried(Integer.parseInt(employeeValues[0]), employeeValues[1], title, salary);
     }
+    
+    public static Employee fillEmployeeArray(Scanner input)
+    {
+        
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Employee[] employeeList = new Employee[10];
-        employeeList[0] = createHourlyObject(input);
-        employeeList[1] = createSalaryObject(input);
-        employeeList[2] = createHourlyObject(input);
-        employeeList[3] = createSalaryObject(input);
-        employeeList[4] = createHourlyObject(input);
-        employeeList[5] = createSalaryObject(input);
-        
-        for(int i = 0; i <10;i++){
-            try{
-            System.out.println(employeeList[i].toString());
-            }
-            catch(NullPointerException e){
-                System.out.println("id: , name: ");
+        for(int i = 0, hourly=0,salary=0; i <10; i++){
+            if((hourly>3)&&(salary>3)){
+                System.out.println("Choose h for hourly or s for salaried or exit to exit: ");
+                String userDecision= input.nextLine();
+                if(userDecision.equals("exit")){
+                    
+                }
             }
         }
+        
+        for(int i = 0; i <10;i++){
+            System.out.println(employeeList[i].toString());
+        }
+        
         System.out.println("\nRaise");
         for (int i = 0; i < 10; i++) {
 
@@ -92,7 +102,11 @@ public class Client {
             }
 
         }
-
+        //Number of class instances
+        System.out.println("\nNumber of Employee instances: " + Employee.getEmployeeCounter());
+        System.out.println("Number of Hourly instances: " + Hourly.getHourlyCounter());
+        System.out.println("Number of Salaried instances: " + Salaried.getSalariedCounter()); 
+        
         //Test false for employee equals
         Employee employeeTemplate = new Employee(1,"Bob");
         Employee falseEmployee = new Employee(2,"Sam");
@@ -119,6 +133,8 @@ public class Client {
         //Test true for Salaried equals
         Salaried trueSalaried = new Salaried(1,"Bob","Intern",1500);
         System.out.println("Test for true value for Salaried equals: " + salariedTemplate.equals(trueSalaried));
-    
+        
+        
+
     }
 }

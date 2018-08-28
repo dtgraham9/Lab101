@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Salaried extends Employee{
     private String title;
     private int salary;
+    private static int salariedCounter=0;
     
     /**
      *Creates instance of Salaried object 
@@ -23,6 +24,14 @@ public class Salaried extends Employee{
         super(id, name);
         this.title = title;
         setSalary(salary);
+        salariedCounter++;
+    }
+    /**
+     * Returns number of Salaried instances
+     * @return counter
+     */
+    public static int getSalariedCounter(){
+        return salariedCounter;
     }
     
     /**
