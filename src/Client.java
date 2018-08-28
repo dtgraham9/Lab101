@@ -66,22 +66,48 @@ public class Client {
         return new Salaried(Integer.parseInt(employeeValues[0]), employeeValues[1], title, salary);
     }
     
-    public static Employee fillEmployeeArray(Scanner input)
-    {
-        
-    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Employee[] employeeList = new Employee[10];
-        for(int i = 0, hourly=0,salary=0; i <10; i++){
-            if((hourly>3)&&(salary>3)){
-                System.out.println("Choose h for hourly or s for salaried or exit to exit: ");
+        OUTER:
+        for (int i = 0, hourly = 0, salary = 0; i <10; i++) {
+            if ((hourly>2)&&(salary>2)) {
+                System.out.print("Choose h for hourly or s for salaried or exit to exit: ");
                 String userDecision= input.nextLine();
-                if(userDecision.equals("exit")){
-                    
+                switch (userDecision) {
+                    case "exit":
+                        for(int y = i; y < 10; y++){
+                            employeeList[y]=new Employee();
+                        }   break OUTER;
+                    case "h":
+                        employeeList[i] = createHourlyObject(input);
+                        hourly++;
+                        break;
+                    case "s":
+                        employeeList[i] = createSalaryObject(input);
+                        salary++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else{
+                System.out.print("Choose h for hourly or s for salaried: ");
+                String userDecision= input.nextLine();
+                switch (userDecision) {
+                    case "h":
+                        employeeList[i] = createHourlyObject(input);
+                        hourly++;
+                        break;
+                    case "s":
+                        employeeList[i] = createSalaryObject(input);
+                        salary++;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
