@@ -8,7 +8,7 @@ import java.util.Scanner;
  * All classes are printed by toString
  * All classes receive a 10% raise and reprinted via toString
  * Finally the total of each type of class is printed
- * The equals method for Employee, Salaried, and Hourly are test
+ * The equals method for Employee, Salaried, and Hourly are tested
  * @author Graham Thompson
  * @version 8/25/2018
  */
@@ -72,8 +72,9 @@ public class Client {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Employee[] employeeList = new Employee[10];
-        OUTER:
-        for (int i = 0, hourly = 0, salary = 0; i <10; i++) {
+        
+        OUTER:                                                      //Responsible for prompting user for input and assigning Salaried, Hourly, and Employee
+        for (int i = 0, hourly = 0, salary = 0; i <10; i++) {       //based on input
             if ((hourly>2)&&(salary>2)) {
                 System.out.print("Choose h for hourly or s for salaried or exit to exit: ");
                 String userDecision= input.nextLine();
