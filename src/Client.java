@@ -75,10 +75,19 @@ public class Client {
         
         OUTER:                                                      //Responsible for prompting user for input and assigning Salaried, Hourly, and Employee
         for (int i = 0, hourly = 0, salary = 0; i <10; i++) {       //based on input
+            String userDecision;
             if ((hourly>2)&&(salary>2)) {
                 System.out.print("Choose h for hourly or s for salaried or exit to exit: ");
-                String userDecision= input.nextLine();
-                switch (userDecision) {
+                userDecision= input.nextLine();
+            }
+            else{
+                System.out.print("Choose h for hourly or s for salaried: ");
+                userDecision= input.nextLine();
+                if(userDecision.equals("exit")){
+                    userDecision="";
+                }
+            }
+            switch (userDecision) {
                     case "exit":
                         for(int y = i; y < 10; y++){
                             employeeList[y]=new Employee();
@@ -92,27 +101,9 @@ public class Client {
                         salary++;
                         break;
                     default:
-                        employeeList[i] = new Employee();
+                        i--;        //prevents anything besides s, h, or exit causing i to be incremented
                         break;
                 }
-            }
-            else{
-                System.out.print("Choose h for hourly or s for salaried: ");
-                String userDecision= input.nextLine();
-                switch (userDecision) {
-                    case "h":
-                        employeeList[i] = createHourlyObject(input);
-                        hourly++;
-                        break;
-                    case "s":
-                        employeeList[i] = createSalaryObject(input);
-                        salary++;
-                        break;
-                    default:
-                        employeeList[i] = new Employee();
-                        break;
-                }
-            }
         }
         
         for(int i = 0; i <10;i++){
