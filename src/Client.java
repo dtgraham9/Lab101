@@ -91,6 +91,7 @@ public class Client {
                         salary++;
                         break;
                     default:
+                        employeeList[i] = new Employee();
                         break;
                 }
             }
@@ -107,6 +108,7 @@ public class Client {
                         salary++;
                         break;
                     default:
+                        employeeList[i] = new Employee();
                         break;
                 }
             }
