@@ -1,6 +1,3 @@
-
-import java.util.Objects;
-
 /**
  * Employee stores id (int) number
  * and name (string) 
@@ -92,14 +89,5 @@ public class Employee {
         return id == e.id
                 && name.equals( e.name );     
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
-
 
 }

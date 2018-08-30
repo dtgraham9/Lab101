@@ -1,6 +1,3 @@
-
-import java.util.Objects;
-
 /**
  * Hourly class extends the Employee class
  * Takes id (int) number, name (string),
@@ -103,12 +100,4 @@ public class Hourly extends Employee {
         return super.toString() + ", position: " + this.getPosition() + ", hourly rate: " + this.getHourlyRate();
     }
     
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.position);
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.hourlyRate) ^ (Double.doubleToLongBits(this.hourlyRate) >>> 32));
-        return hash;
-    }
-
 }

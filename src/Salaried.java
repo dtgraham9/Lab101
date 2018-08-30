@@ -1,6 +1,3 @@
-
-import java.util.Objects;
-
 /**
  * Salaried class extends the Employee class
  * Takes id (int) number, name (string),
@@ -99,11 +96,4 @@ public class Salaried extends Employee{
                 && this.getTitle().equals(e.getTitle());        
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.title);
-        hash = 17 * hash + this.salary;
-        return hash;
-    }
 }

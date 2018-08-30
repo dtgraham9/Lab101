@@ -67,6 +67,10 @@ public class Client {
     }
     
     /**
+     * Creates an Array of 10 Employee objects
+     * Assign values to all employees based on type
+     * Print out all employees, and then give 10% raise and print out
+     * Finally test equals method of each class
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -111,7 +115,7 @@ public class Client {
         }
         
         System.out.println("\nRaise");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {     //Give 10% raise to all employees
 
             if (employeeList[i] instanceof Hourly) {
                 ((Hourly) employeeList[i]).setHourlyRate(((Hourly) employeeList[i]).getHourlyRate() * 1.1);
